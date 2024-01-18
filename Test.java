@@ -40,7 +40,7 @@ public class Test {
                 cacheSize1 = Integer.parseInt(args[1]);
                 inputS = new FileInputStream(args[2]);
                 cacheOne = new Cache<>(cacheSize1);
-                System.out.println("A new cache has been created with " + cacheSize1 + " entries.");
+                System.out.println("\nA new cache has been created with " + cacheSize1 + " entries.\n");
             }
 
             if ((args.length == 4) && (choice == 2)) {
@@ -49,8 +49,8 @@ public class Test {
                 cacheOne = new Cache<>(cacheSize1);
                 cacheTwo = new Cache<>(cacheSize2);
                 inputS = new FileInputStream(args[3]);
-                System.out.println("The first level cache has been created with " + cacheSize1 + " entries.");
-                System.out.println("The second level cache has been created with " + cacheSize2 + " entries.");
+                System.out.println("\nThe first level cache has been created with " + cacheSize1 + " entries.");
+                System.out.println("The second level cache has been created with " + cacheSize2 + " entries.\n");
             }
 
             int numLines = 0;

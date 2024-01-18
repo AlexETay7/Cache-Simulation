@@ -1,3 +1,8 @@
+
+/**
+ * @author Alex Taylor CS321 Data Structures 1/18/24
+ */
+
 import java.util.LinkedList;
 
 /**
@@ -41,15 +46,6 @@ public class Cache<T> {
     }
 
     /**
-     * Inserts data into top of cache (linkedlist)
-     * 
-     * @param dataItem - data to be added to top of cache
-     */
-    public void addObject(T dataItem) {
-        getObject(dataItem);
-    }
-
-    /**
      * Removes the object from the cache.
      * 
      * @param dataItem - data to be removed
@@ -60,6 +56,9 @@ public class Cache<T> {
         }
     }
 
+    /**
+     * Clears the cache.
+     */
     public void clearCache() {
         cacheList.clear();
     }

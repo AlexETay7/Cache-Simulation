@@ -19,7 +19,8 @@ public class Cache<T> {
     }
 
     /**
-     * Returns true if the data object is found in the list, false otherwise.
+     * Returns true (cache hit) if the data object is found
+     * in the list, false (cache miss) otherwise.
      *
      * @param dataItem - data we are looking for
      * @return a boolean value
@@ -53,9 +54,7 @@ public class Cache<T> {
      * @param dataItem - data to be removed
      */
     public void removeObject(T dataItem) {
-        if (!cacheList.isEmpty()) {
-            cacheList.removeLast();
-        }
+        cacheList.removeLast();
     }
 
     /**

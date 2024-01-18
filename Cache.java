@@ -11,9 +11,9 @@ import java.util.LinkedList;
  */
 public class Cache<T> {
     private LinkedList<T> cacheList;
-    private int maxSize;
+    private long maxSize;
 
-    public Cache(int maxSize) {
+    public Cache(long maxSize) {
         this.maxSize = maxSize;
         this.cacheList = new LinkedList<>();
     }

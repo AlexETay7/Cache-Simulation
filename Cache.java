@@ -20,29 +20,31 @@ public class Cache<T> {
 
     /**
      * Returns true if the data object is found in the list, false otherwise.
-     * If it's a cache hit, move the hit object to the front of the cache (MRU).
-     * If it's a cache miss, add the data to the front of the cache.
      *
      * @param dataItem - data we are looking for
      * @return a boolean value
      */
     public boolean getObject(T dataItem) {
-        boolean isHit = cacheList.contains(dataItem);
+        return cacheList.contains(dataItem);
+    }
 
-        if (isHit) {
-            // Move the hit object to the front of the cache (MRU)
-            cacheList.remove(dataItem);
-        }
+    /**
+     * Inserts data into top of cache (linkedlist)
+     * If it's a cache hit, move the hit object to the front of the cache (MRU).
+     * If it's a cache miss, add the data to the front of the cache.
+     * 
+     * @param dataItem - data to be added to top of cache
+     */
+    public void addObject(T dataItem) {
 
-        // Add the data item to the front of the cache
-        cacheList.addFirst(dataItem);
-
-        // If the cache size exceeds the limit, remove the oldest item
         if (cacheList.size() > maxSize) {
             removeObject(dataItem);
         }
 
-        return isHit;
+        if (getObject(dataItem)) {
+            cacheList.remove(dataItem);
+        }
+        cacheList.addFirst(dataItem);
     }
 
     /**

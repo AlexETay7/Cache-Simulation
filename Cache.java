@@ -26,7 +26,7 @@ public class Cache<T> {
      * in the list, false (cache miss) otherwise.
      *
      * @param dataItem - data we are looking for
-     * @return a boolean value
+     * @return true if data item is in list, false otherwise
      */
     public boolean getObject(T dataItem) {
         return cacheList.contains(dataItem);
@@ -45,10 +45,6 @@ public class Cache<T> {
         if (cacheList.size() > maxSize) {
             cacheList.removeLast();
         }
-
-        // if (getObject(dataItem)) {
-        //     cacheList.remove(dataItem);
-        // }
         cacheList.addFirst(dataItem);
     }
 

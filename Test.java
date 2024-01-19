@@ -24,6 +24,7 @@
          int choice; 
          String readLine;
          String input;
+         long startTime;
  
          // Check for correct number of command line arguments
          if ((args.length != 3) && (args.length != 4)) {
@@ -65,7 +66,7 @@
              }
  
              int numLines = 0;
-             // time stamp?
+             startTime = System.currentTimeMillis();
              InputStreamReader inputR = new InputStreamReader(inputS);
              BufferedReader bReader = new BufferedReader(inputR);
  
@@ -112,6 +113,10 @@
                      }
                  }
              }
+
+             // Calculate runtime
+             long endTime = System.currentTimeMillis();
+             long elapsedTime = endTime - startTime;
              
              // Print gloal references, and cache hits info
              System.out.println("The number of global references: " + numReferences1);
@@ -129,7 +134,8 @@
              System.out.println("The number of 2nd-level cache hits: " + numHits2);
              System.out.println("The 2nd-level cache hit ratio             : " + ((double)numHits2 / numReferences2) + "\n");
              }
-
+             
+             System.out.println("Program runtime: " + elapsedTime + " milliseconds");
              System.out.println("\n----------------------------------------------------------------");
  
          } catch (IOException e) {

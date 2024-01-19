@@ -33,6 +33,7 @@ public class Cache<T> {
      * Inserts data into top of cache (linkedlist)
      * If it's a cache hit, move the hit object to the front of the cache (MRU).
      * If it's a cache miss, add the data to the front of the cache.
+     * All logic to remove the object and add it back to the cache is done in this method.
      * 
      * @param dataItem - data to be added to top of cache
      */

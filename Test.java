@@ -104,6 +104,23 @@
                      }
                  }
              }
+             
+             // Print gloal references, and cache hits info
+             System.out.println("The number of global references: " + (numReferences1 + numReferences2));
+             System.out.println("The number of global cache hits: " + (numHits1 + numHits2));
+             System.out.println("The global hit ratio                  : " + ((double)(numHits1 + numHits2) / (numReferences1 + numReferences2)) + "\n");
+
+             // Print 1st-level references, and cache hits info
+             System.out.println("The number of 1st-level references: " + numReferences1);
+             System.out.println("The number of 1st-level cache hits: " + numHits1);
+             System.out.println("The 1st-level cache hit ratio             : " + ((double)numHits1 / numReferences1) + "\n");
+
+             // Print 2nd-level references, and cache hits info
+             System.out.println("The number of 2nd-level references: " + numReferences2);
+             System.out.println("The number of 2nd-level cache hits: " + numHits2);
+             System.out.println("The 2nd-level cache hit ratio             : " + ((double)numHits2 / numReferences2) + "\n");
+
+             System.out.println("\n----------------------------------------------------------------");
  
          } catch (IOException e) {
              e.printStackTrace();

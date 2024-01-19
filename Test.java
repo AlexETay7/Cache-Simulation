@@ -129,9 +129,7 @@
  
          } catch (IOException e) {
              e.printStackTrace();
-         } finally {
-            // need to close some scanners
-         }
+         } 
      }
  }
  

@@ -1,4 +1,3 @@
-
 /**
  * @author Alex Taylor CS321 Data Structures 1/18/24
  */
@@ -13,6 +12,10 @@ public class Cache<T> {
     private LinkedList<T> cacheList;
     private long maxSize;
 
+    /**
+     * Initializes a new Cache object.
+     * @param maxSize - the max size of the cache
+     */
     public Cache(long maxSize) {
         this.maxSize = maxSize;
         this.cacheList = new LinkedList<>();

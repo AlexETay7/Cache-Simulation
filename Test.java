@@ -14,7 +14,10 @@
          // Declare caches and counters
          Cache<String> cacheOne = null;
          Cache<String> cacheTwo = null;
-         long numReferences1 = 0, numReferences2 = 0, numHits1 = 0, numHits2 = 0;
+         long numReferences1 = 0;
+         long numReferences2 = 0; 
+         long numHits1 = 0; 
+         long numHits2 = 0;
          long cacheSize1;
          long cacheSize2;
          StringTokenizer token;
@@ -48,7 +51,7 @@
                  cacheSize1 = Integer.parseInt(args[1]);
                  inputS = new FileInputStream(args[2]);
                  cacheOne = new Cache<>(cacheSize1);
-                 System.out.println("\nA new cache has been created with " + cacheSize1 + " entries.\n");
+                 System.out.println("\nA single cache has been created with " + cacheSize1 + " entries.\n");
              }
  
              if ((args.length == 4) && (choice == 2)) {
@@ -115,17 +118,19 @@
              System.out.println("The number of 1st-level cache hits: " + numHits1);
              System.out.println("The 1st-level cache hit ratio             : " + ((double)numHits1 / numReferences1) + "\n");
 
+             if ((args.length == 4) && (choice == 2)) {
              // Print 2nd-level references, and cache hits info
              System.out.println("The number of 2nd-level references: " + numReferences2);
              System.out.println("The number of 2nd-level cache hits: " + numHits2);
              System.out.println("The 2nd-level cache hit ratio             : " + ((double)numHits2 / numReferences2) + "\n");
+             }
 
              System.out.println("\n----------------------------------------------------------------");
  
          } catch (IOException e) {
              e.printStackTrace();
          } finally {
-             // Close resources if needed
+            // need to close some scanners
          }
      }
  }

@@ -84,6 +84,7 @@
                          numReferences1++;
                          if (cacheOne.getObject(input)) {
                              numHits1++;
+                             cacheOne.removeObject(input);
                              cacheOne.addObject(input);
                          } else {
                              cacheOne.addObject(input);

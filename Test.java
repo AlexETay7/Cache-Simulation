@@ -1,77 +1,115 @@
-
 /**
+ * The Test class for simulating cache behavior with multi-level caching.
+ * 
  * @author Alex Taylor CS321 Data Structures 1/18/24
  */
 
-import java.io.*;
-import java.util.*;
-
-public class Test {
-
-    public static void main(String[] args) {
-
-        Cache cacheOne = null;
-        Cache cacheTwo = null;
-        long numReferences1 = 0, numReferences2 = 0, numHits1 = 0, numHits2 = 0;
-        long cacheSize1, cacheSize2;
-        StringTokenizer token;
-        int choice; 
-        String readLine;
-        String input;
-
-        if ((args.length != 3) && (args.length != 4)) {
-            System.out.println("Usage: java Test 1 <cache size> <textfile>");
-            System.out.println("Usage: java Test 2 <1st-level cache size> <2nd-level cache size> <input textfile name>");
-            System.exit(1);
-        }
-
-        choice = Integer.parseInt(args[0]);
-
-        if ((choice != 1) && (choice != 2)) {
-            System.out.println("Must choose option 1 or 2.");
-            System.out.println("Usage: java Test 1 <cache size> <textfile>");
-            System.out.println("Usage: java Test 2 <1st-level cache size> <2nd-level cache size> <input textfile name>");
-            System.exit(1);
-        }
-
-        try {
-            FileInputStream inputS = null;
-            if ((args.length == 3) && (choice == 1)) {
-                cacheSize1 = Integer.parseInt(args[1]);
-                inputS = new FileInputStream(args[2]);
-                cacheOne = new Cache<>(cacheSize1);
-                System.out.println("\nA new cache has been created with " + cacheSize1 + " entries.\n");
-            }
-
-            if ((args.length == 4) && (choice == 2)) {
-                cacheSize1 = Integer.parseInt(args[1]);
-                cacheSize2 = Integer.parseInt(args[2]);
-                cacheOne = new Cache<>(cacheSize1);
-                cacheTwo = new Cache<>(cacheSize2);
-                inputS = new FileInputStream(args[3]);
-                System.out.println("\nThe first level cache has been created with " + cacheSize1 + " entries.");
-                System.out.println("The second level cache has been created with " + cacheSize2 + " entries.\n");
-            }
-
-            int numLines = 0;
-            // time stamp?
-            InputStreamReader inputR = new InputStreamReader(inputS);
-            BufferedReader bReader = new BufferedReader(inputR);
-            while (( readLine = bReader.readLine()) != null) {
-                numLines++;
-                token = new StringTokenizer(readLine, " ", false);
-                while (token.hasMoreTokens()) {
-                    input = token.nextToken();
-                    numReferences1++;
-                    cacheOne.addObject(input);
-                }
-            }
-
-
-
-        } catch (Exception e) {
-
-        }
-    }
-
-}
+ import java.io.*;
+ import java.util.*;
+ 
+ public class Test {
+ 
+     public static void main(String[] args) {
+ 
+         // Declare caches and counters
+         Cache<String> cacheOne = null;
+         Cache<String> cacheTwo = null;
+         long numReferences1 = 0, numReferences2 = 0, numHits1 = 0, numHits2 = 0;
+         long cacheSize1;
+         long cacheSize2;
+         StringTokenizer token;
+         int choice; 
+         String readLine;
+         String input;
+ 
+         // Check for correct number of command line arguments
+         if ((args.length != 3) && (args.length != 4)) {
+             System.out.println("Usage: java Test 1 <cache size> <textfile>");
+             System.out.println("Usage: java Test 2 <1st-level cache size> <2nd-level cache size> <input textfile name>");
+             System.exit(1);
+         }
+ 
+         // Parse the # of caches choice from command line arguments
+         choice = Integer.parseInt(args[0]);
+ 
+         // Validate the choice
+         if ((choice != 1) && (choice != 2)) {
+             System.out.println("Must choose option 1 or 2.");
+             System.out.println("Usage: java Test 1 <cache size> <textfile>");
+             System.out.println("Usage: java Test 2 <1st-level cache size> <2nd-level cache size> <input textfile name>");
+             System.exit(1);
+         }
+ 
+         try {
+             FileInputStream inputS = null;
+ 
+             // Initialize the cache based on choice and input parameters
+             if ((args.length == 3) && (choice == 1)) {
+                 cacheSize1 = Integer.parseInt(args[1]);
+                 inputS = new FileInputStream(args[2]);
+                 cacheOne = new Cache<>(cacheSize1);
+                 System.out.println("\nA new cache has been created with " + cacheSize1 + " entries.\n");
+             }
+ 
+             if ((args.length == 4) && (choice == 2)) {
+                 cacheSize1 = Integer.parseInt(args[1]);
+                 cacheSize2 = Integer.parseInt(args[2]);
+                 cacheOne = new Cache<>(cacheSize1);
+                 cacheTwo = new Cache<>(cacheSize2);
+                 inputS = new FileInputStream(args[3]);
+                 System.out.println("\nThe first level cache has been created with " + cacheSize1 + " entries.");
+                 System.out.println("The second level cache has been created with " + cacheSize2 + " entries.\n");
+             }
+ 
+             int numLines = 0;
+             // time stamp?
+             InputStreamReader inputR = new InputStreamReader(inputS);
+             BufferedReader bReader = new BufferedReader(inputR);
+ 
+             // Read each line from the input file
+             while ((readLine = bReader.readLine()) != null) {
+                 numLines++;
+                 token = new StringTokenizer(readLine, " ", false);
+ 
+                 // Process each token in the line
+                 while (token.hasMoreTokens()) {
+                     input = token.nextToken();
+ 
+                     if ((args.length == 3) && (choice == 1)) {
+                         // Case for single-level caching
+                         numReferences1++;
+                         if (cacheOne.getObject(input)) {
+                             numHits1++;
+                             cacheOne.addObject(input);
+                         } else {
+                             cacheOne.addObject(input);
+                         }
+                     } else {
+                         // Case for two-level caching
+                         numReferences1++;
+                         if (cacheOne.getObject(input)) {
+                             numHits1++;
+                             cacheOne.addObject(input);
+                         } else {
+                             numReferences2++;
+                             if (cacheTwo.getObject(input)) {
+                                 numHits2++;
+                                 cacheTwo.addObject(input);
+                                 cacheOne.addObject(input);
+                             } else {
+                                 cacheOne.addObject(input);
+                                 cacheTwo.addObject(input);
+                             }
+                         }
+                     }
+                 }
+             }
+ 
+         } catch (IOException e) {
+             e.printStackTrace();
+         } finally {
+             // Close resources if needed
+         }
+     }
+ }
+ 

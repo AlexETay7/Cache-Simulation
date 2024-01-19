@@ -92,11 +92,16 @@
                          numReferences1++;
                          if (cacheOne.getObject(input)) {
                              numHits1++;
+                             cacheOne.removeObject(input);
                              cacheOne.addObject(input);
+
+                             cacheTwo.removeObject(input);
+                             cacheTwo.addObject(input);
                          } else {
                              numReferences2++;
                              if (cacheTwo.getObject(input)) {
                                  numHits2++;
+                                 cacheTwo.removeObject(input);
                                  cacheTwo.addObject(input);
                                  cacheOne.addObject(input);
                              } else {

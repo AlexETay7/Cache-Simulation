@@ -43,12 +43,12 @@ public class Cache<T> {
     public void addObject(T dataItem) {
 
         if (cacheList.size() > maxSize) {
-            removeObject(dataItem);
+            cacheList.removeLast();
         }
 
-        if (getObject(dataItem)) {
-            cacheList.remove(dataItem);
-        }
+        // if (getObject(dataItem)) {
+        //     cacheList.remove(dataItem);
+        // }
         cacheList.addFirst(dataItem);
     }
 
@@ -58,7 +58,7 @@ public class Cache<T> {
      * @param dataItem - data to be removed
      */
     public void removeObject(T dataItem) {
-        cacheList.removeLast();
+        cacheList.remove(dataItem);
     }
 
     /**

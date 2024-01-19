@@ -109,7 +109,7 @@
              }
              
              // Print gloal references, and cache hits info
-             System.out.println("The number of global references: " + (numReferences1 + numReferences2));
+             System.out.println("The number of global references: " + numReferences1);
              System.out.println("The number of global cache hits: " + (numHits1 + numHits2));
              System.out.println("The global hit ratio                  : " + ((double)(numHits1 + numHits2) / numReferences1 + "\n"));
 

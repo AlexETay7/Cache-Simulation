@@ -42,7 +42,7 @@ public class Cache<T> {
      */
     public void addObject(T dataItem) {
 
-        if (cacheList.size() > maxSize) {
+        if (cacheList.size() >= maxSize) {
             cacheList.removeLast();
         }
         cacheList.addFirst(dataItem);

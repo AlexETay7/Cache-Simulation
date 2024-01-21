@@ -8,7 +8,7 @@
 ### ***OVERVIEW:***
 In this program I designed a cache implemenation using the linked list
 data structure. The program can simulate the behavior of a single level 
-cache and a two-level cache. 
+cache and a two-level cache. I also created a test class to verify the functionality of the cache.
 
 
 ### ***INCLUDED FILES:***

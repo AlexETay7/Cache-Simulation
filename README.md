@@ -42,6 +42,10 @@ cache and a two-level cache. I also created a test class to verify the functiona
 
 ### ***PROGRAM DESIGN AND IMPORTANT CONCEPTS:***
 
+This program implements a cache simulation using a linked list
+data structure. A cache is a storage in memory, and data objects
+in the cache are frequently accessed by the computer. This cache program
+is a simulation of that behavior. The cache uses an MRU scheme. MRU stands for "Most Recently Used", where if a user needs a data item from the cache, the item is returned to the user and in turn placed at the top of the cache. If the cache is full, the oldest entry in the cache is removed.
 
 
 ### ***TESTING:***

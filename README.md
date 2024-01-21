@@ -45,9 +45,10 @@ cache and a two-level cache. I also created a test class to verify the functiona
 
 ### ***TESTING:***
 Test.java is the driver class and in turn the test class for the Cache 
-class. 
+class. I was able to verify the cache's functionality by comparing the 
+outputs of my cache's hit and reference ratios to the values given to me 
+by my professor.
  
-
 
 ### ***DISCUSSION:***
  

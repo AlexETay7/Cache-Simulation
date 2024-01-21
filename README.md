@@ -64,7 +64,7 @@ HR = (# of cache 1 hits + # of cache 2 hits) / (# of cache 1 references)
 
 The reason the global hit ratio for a multi-level cache is divided 
 by only the number of references to the first cache is because we
-have to consider the cache as a blcack-box. 
+have to consider the cache as a black-box. 
 This means the (# of cache 1 references = # of global references).
 
 

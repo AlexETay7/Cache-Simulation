@@ -6,8 +6,9 @@
 **************** 
 
 ### ***OVERVIEW:***
-
-
+In this program I designed a cache implemenation using the linked list
+data structure. The program can simulate the behavior of a single level 
+cache and a two-level cache. 
 
 
 ### ***INCLUDED FILES:***
@@ -30,7 +31,7 @@
  $ java Test 1 <cache size> <input textfile name>
  </pre>
 
- To test a multi-level cache (two) implementation, run the command:
+ To test a multi-level(two) cache implementation, run the command:
  <pre>
  $ java Test 2 <1st-level cache size> <2nd-level cache size> <input textfile name>
  </pre>

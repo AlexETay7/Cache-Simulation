@@ -30,12 +30,12 @@ functionality of the cache.
 
  To test a single cache implementation, run the command:
  <pre>
- $ java Test 1 <1st-level cache size> `<input textfile name>`
+ $ java Test 1 <1st-level cache size> <input "textfile name">
  </pre>
 
  To test a multi-level(two) cache implementation, run the command:
  <pre>
- $ java Test 2 <1st-level cache size> <2nd-level cache size> `<input textfile name>`
+ $ java Test 2 <1st-level cache size> <2nd-level cache size> <input "textfile name">
  </pre>
 
  The console output will give the results after the program finishes.

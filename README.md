@@ -10,7 +10,8 @@
 In this program, I designed a cache implementation using the linked list
 data structure. The program can simulate the behavior of a single-level 
 cache and a two-level cache. I also created a test class to verify the 
-functionality of the cache.
+functionality of the cache. This was an assignment for CS321,
+my data structures and algorithms class. All code was written by me.
 
 
 ### ***INCLUDED FILES:***

@@ -1,5 +1,5 @@
 /**
- * The Test class for simulating cache behavior with multi-level caching.
+ * The test/driver class for simulating cache behavior with multi-level caching.
  * 
  * @author Alex Taylor CS321 Data Structures 1/18/24
  */
